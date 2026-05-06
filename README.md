@@ -1,1 +1,833 @@
-# DigitecGalaxus
+<div class="bb-badge">Inoffizielles Gedankenexperiment</div>
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elion Paqarizi – Produktdetail | Galaxus</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #1A1A1A;
+    --mid: #6B7280;
+    --light: #F9FAFB;
+    --border: #E5E7EB;
+    --green: #16A34A;
+    --blue-link: #2563EB;
+    --red-badge: #DC2626;
+    --btn-dark: #1F2937;
+    --btn-dark-hover: #111827;
+    --font: 'Inter', sans-serif;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:var(--font); background:#fff; color:var(--black); font-size:14px; line-height:1.5; }
+
+  /* RAINBOW BAR */
+  .rainbow {
+    height: 11px;
+    background: linear-gradient(to right,
+        #D2B48C 0%,   #D2B48C 16.66%,  /* helles Braun */
+        #FACC15 16.66%, #FACC15 33.33%, /* Gelb */
+        #EF4444 33.33%, #EF4444 50.00%, /* Rot */
+         #22C55E 50.00%, #22C55E 66.66%, /* Grün */
+        #A855F7 66.66%, #A855F7 83.33%, /* Violett */
+        #60A5FA 83.33%, #60A5FA 100%   /* Hellblau */
+);
+``
+  }
+
+  /* HEADER */
+  .site-header {
+    background: #fff;
+    border-bottom: 1px solid var(--border);
+    padding: 0 32px;
+    height: 58px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    position: sticky;
+    top: 5px;
+    z-index: 200;
+  }
+  .logo-wrap { display:flex; align-items:center; gap:8px; text-decoration:none; flex-shrink:0; }
+  .logo-turtle { width:32px; height:32px; }
+  .logo-wordmark { font-size:20px; font-weight:800; color:var(--black); letter-spacing:-.5px; }
+
+  .header-search {
+    flex:1; max-width:560px;
+    display:flex; align-items:center;
+    border:1.5px solid var(--border);
+    border-radius:8px; overflow:hidden;
+    background: var(--light);
+    gap:0;
+  }
+  .header-search input {
+    flex:1; border:none; background:transparent;
+    padding:9px 14px; font-family:var(--font); font-size:13.5px; outline:none; color:var(--black);
+  }
+  .header-search input::placeholder { color:#9CA3AF; }
+  .header-search-btn {
+    background:transparent; border:none; color:var(--mid);
+    padding:0 14px; cursor:pointer; font-size:16px; height:100%;
+  }
+
+  .header-icons { display:flex; gap:4px; margin-left:auto; align-items:center; }
+  .header-icon {
+    width:38px; height:38px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-size:18px; cursor:pointer; transition:background .15s; color:var(--black); position:relative;
+  }
+  .header-icon:hover { background:var(--light); }
+  .header-icon .badge {
+    position:absolute; top:4px; right:4px;
+    width:16px; height:16px; background:#E53E3E; color:white;
+    border-radius:50%; font-size:9px; font-weight:700;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .avatar-icon {
+    width:34px; height:34px; border-radius:50%;
+    background:linear-gradient(135deg,#667EEA,#ED64A6);
+    display:flex; align-items:center; justify-content:center;
+    font-size:14px; font-weight:700; color:white; cursor:pointer;
+    overflow:hidden;
+  }
+  .avatar-icon img { width:100%; height:100%; object-fit:cover; }
+
+  /* CATEGORY NAV */
+  .cat-nav {
+    border-bottom:1px solid var(--border);
+    padding:0 32px;
+    display:flex; gap:0;
+    overflow-x:auto; scrollbar-width:none;
+    background:#fff;
+  }
+  .cat-nav::-webkit-scrollbar { display:none; }
+  .cat-nav a {
+    color:var(--black); text-decoration:none; font-size:13px; font-weight:500;
+    padding:11px 16px; white-space:nowrap;
+    border-bottom:2px solid transparent; margin-bottom:-1px;
+    transition:border-color .15s;
+  }
+  .cat-nav a:hover { border-bottom-color: #9CA3AF; }
+  .cat-nav a.active { border-bottom-color: var(--black); font-weight:600; }
+
+  /* LEFT SIDE NAV */
+  .page-wrap {
+    max-width:1280px; margin:0 auto;
+    display:grid; grid-template-columns:200px 1fr;
+    gap:0; padding:0;
+  }
+  .side-nav {
+    padding:20px 16px 20px 32px;
+    border-right:1px solid var(--border);
+    font-size:13px;
+    min-height:600px;
+  }
+  .side-nav .side-group { margin-bottom:20px; }
+  .side-nav .side-group-title {
+    font-weight:600; font-size:13px; color:var(--black);
+    padding:6px 8px; display:flex; align-items:center; justify-content:space-between;
+    cursor:pointer; border-radius:6px; transition:background .1s;
+  }
+  .side-nav .side-group-title:hover { background:var(--light); }
+  .side-nav .side-group-title .arrow { color:var(--mid); font-size:10px; }
+  .side-nav .side-item {
+    padding:5px 8px 5px 14px; color:var(--mid); font-size:12.5px;
+    cursor:pointer; border-radius:5px; transition:all .1s;
+  }
+  .side-nav .side-item:hover { background:var(--light); color:var(--black); }
+  .side-nav .side-item.active { color:var(--black); font-weight:600; }
+  .side-related { margin-top:20px; padding-top:16px; border-top:1px solid var(--border); }
+  .side-related-title { font-size:12px; font-weight:600; color:var(--mid); margin-bottom:8px; text-transform:uppercase; letter-spacing:.3px; }
+  .side-related a { display:block; font-size:12.5px; color:var(--blue-link); text-decoration:none; padding:3px 0; }
+  .side-related a:hover { text-decoration:underline; }
+
+  /* BREADCRUMB */
+  .breadcrumb-wrap {
+    padding:12px 28px 0;
+  }
+  .breadcrumb {
+    font-size:12px; color:var(--mid);
+    display:flex; gap:6px; align-items:center; flex-wrap:wrap;
+  }
+  .breadcrumb a { color:var(--blue-link); text-decoration:none; }
+  .breadcrumb a:hover { text-decoration:underline; }
+  .breadcrumb .sep { color:#D1D5DB; font-size:10px; }
+
+  /* PRODUCT AREA */
+  .product-area {
+    padding:16px 28px 48px;
+  }
+  .product-layout {
+    display:grid; grid-template-columns:1fr 360px;
+    gap:40px;
+  }
+
+  /* GALLERY */
+  .gallery { display:flex; flex-direction:column; }
+  .gallery-main {
+    aspect-ratio:1; border:1px solid var(--border); border-radius:10px;
+    overflow:hidden; background:#fff;
+    display:flex; align-items:center; justify-content:center;
+    position:relative; margin-bottom:12px; cursor:zoom-in;
+  }
+  .gallery-main-content {
+    width:100%; height:100%;
+    display:flex; flex-direction:column;
+    align-items:center; justify-content:center;
+    padding:40px; text-align:center;
+    animation:fadeIn .3s ease;
+  }
+  .gallery-main-content.photo-view { padding:0; }
+  .gallery-main-content.photo-view img { width:100%; height:100%; object-fit:cover; }
+  @keyframes fadeIn { from{opacity:0} to{opacity:1} }
+
+  .product-circle {
+    width:180px; height:180px; border-radius:50%;
+    background: #F3F4F6;
+    border:2px solid var(--border);
+    display:flex; align-items:center; justify-content:center;
+    font-size:72px; margin:0 auto 20px; overflow:hidden;
+    position:relative;
+  }
+  .product-circle img { width:100%; height:100%; object-fit:cover; }
+  .gallery-label { font-size:15px; font-weight:600; color:var(--black); }
+  .gallery-sub { font-size:11.5px; color:var(--mid); margin-top:4px; font-family:monospace; letter-spacing:.3px; }
+
+  .gallery-dots { display:flex; gap:8px; justify-content:center; margin-bottom:8px; }
+  .gdot {
+    width:8px; height:8px; border-radius:50%; background:var(--border);
+    cursor:pointer; transition:background .15s;
+  }
+  .gdot.active { background:var(--black); }
+
+  .gallery-thumbs { display:flex; gap:8px; justify-content:center; }
+  .gthumb {
+    width:58px; height:58px; border:1.5px solid var(--border); border-radius:6px;
+    display:flex; align-items:center; justify-content:center;
+    font-size:20px; cursor:pointer; background:#fff; overflow:hidden;
+    transition:border-color .15s;
+  }
+  .gthumb:hover, .gthumb.active { border-color:var(--black); }
+  .gthumb.photo-gthumb { font-size:0; padding:0; }
+  .gthumb.photo-gthumb img { width:100%; height:100%; object-fit:cover; }
+  .gallery-count { text-align:center; margin-top:8px; font-size:12px; color:var(--blue-link); cursor:pointer; }
+  .gallery-count:hover { text-decoration:underline; }
+
+  /* BUY BOX */
+  .buybox {}
+  .bb-badge {
+    display:inline-block; background:var(--red-badge); color:white;
+    font-size:12px; font-weight:700; padding:2px 8px; border-radius:4px; margin-bottom:10px;
+  }
+  .bb-price-row { display:flex; align-items:baseline; gap:10px; margin-bottom:4px; }
+  .bb-price-main { font-size:28px; font-weight:700; color:var(--black); letter-spacing:-.5px; }
+  .bb-price-old { font-size:14px; color:var(--mid); text-decoration:line-through; }
+  .bb-price-unit { font-size:12px; color:var(--mid); }
+  .bb-title { font-size:22px; font-weight:700; letter-spacing:-.4px; line-height:1.3; margin-bottom:6px; }
+  .bb-title strong { font-weight:800; }
+  .bb-subtitle { font-size:13px; color:var(--mid); margin-bottom:16px; }
+
+  .bb-meta { display:flex; gap:24px; margin-bottom:20px; padding-bottom:16px; border-bottom:1px solid var(--border); }
+  .bb-meta-group {}
+  .bb-meta-label { font-size:11.5px; color:var(--mid); margin-bottom:2px; }
+  .bb-meta-val { font-size:13px; font-weight:500; color:var(--black); }
+  .bb-meta-val a { color:var(--blue-link); text-decoration:none; }
+  .bb-meta-val a:hover { text-decoration:underline; }
+  .star { color:#F59E0B; }
+
+  .bb-avail {
+    display:flex; align-items:center; gap:8px;
+    font-size:13px; font-weight:600; color:var(--green); margin-bottom:6px;
+  }
+  .avail-dot { width:8px; height:8px; background:var(--green); border-radius:50%; animation:pulse 1.8s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(1.4)} }
+  .bb-stock { font-size:12.5px; color:var(--green); margin-bottom:18px; }
+
+  .bb-config { margin-bottom:16px; }
+  .bb-config-label { font-size:12px; font-weight:600; color:var(--mid); text-transform:uppercase; letter-spacing:.4px; margin-bottom:8px; }
+  .bb-options { display:flex; flex-wrap:wrap; gap:7px; }
+  .bb-opt {
+    border:1.5px solid var(--border); border-radius:6px;
+    padding:6px 12px; font-size:12.5px; cursor:pointer;
+    transition:all .15s; font-weight:500; background:#fff;
+  }
+  .bb-opt:hover { border-color:#6B7280; }
+  .bb-opt.sel { border-color:var(--black); background:var(--black); color:#fff; }
+
+  .btn-cart {
+    width:100%; background:var(--btn-dark); color:white; border:none;
+    padding:14px 20px; border-radius:8px;
+    font-family:var(--font); font-size:15px; font-weight:600;
+    cursor:pointer; margin-bottom:10px;
+    transition:background .15s, transform .1s;
+    display:flex; align-items:center; justify-content:center; gap:8px;
+    text-decoration:none;
+  }
+  .btn-cart:hover { background:var(--btn-dark-hover); transform:translateY(-1px); }
+  .btn-cart:active { transform:translateY(0); }
+
+  .btn-row { display:flex; gap:8px; margin-bottom:16px; }
+  .btn-outline {
+    flex:1; background:#fff; color:var(--black);
+    border:1.5px solid var(--border); padding:11px;
+    border-radius:8px; font-family:var(--font); font-size:13px; font-weight:500;
+    cursor:pointer; transition:border-color .15s; display:flex; align-items:center; justify-content:center; gap:6px;
+  }
+  .btn-outline:hover { border-color:#9CA3AF; }
+
+  .bb-delivery { font-size:12.5px; color:var(--mid); margin-bottom:6px; }
+  .bb-delivery a { color:var(--blue-link); text-decoration:none; }
+
+  .bb-info-box {
+    background:var(--light); border-radius:8px;
+    padding:14px 16px; margin-top:16px; margin-bottom:16px;
+  }
+  .bb-info-row { display:flex; align-items:flex-start; gap:10px; margin-bottom:9px; font-size:13px; }
+  .bb-info-row:last-child { margin-bottom:0; }
+  .bb-info-icon { font-size:16px; flex-shrink:0; margin-top:1px; }
+  .bb-info-text { color:var(--black); }
+  .bb-info-text span { color:var(--mid); display:block; font-size:12px; }
+
+  /* PRODUCT INFO SECTION */
+  .product-info { margin-top:32px; padding-top:24px; border-top:1px solid var(--border); }
+  .section-title { font-size:18px; font-weight:700; margin-bottom:16px; letter-spacing:-.3px; }
+  .info-grid { display:grid; grid-template-columns:1fr 1fr; gap:0; }
+  .info-row { display:contents; }
+  .info-row > div {
+    padding:10px 12px; font-size:13.5px; border-bottom:1px solid var(--border);
+  }
+  .info-row > div:first-child { color:var(--mid); font-weight:500; background:#FAFAFA; }
+  .info-row > div:last-child { color:var(--black); }
+  .spec-tag {
+    display:inline-block; background:#F3F4F6; border:1px solid var(--border);
+    padding:2px 8px; border-radius:4px; font-size:11.5px; margin:2px 2px 2px 0;
+    font-family:monospace;
+  }
+
+  /* TABS */
+  .tabs-section { margin-top:32px; }
+  .tabs { display:flex; border-bottom:1.5px solid var(--border); margin-bottom:24px; }
+  .tab {
+    padding:10px 20px; font-size:13.5px; font-weight:500; cursor:pointer;
+    border-bottom:2px solid transparent; margin-bottom:-1.5px; color:var(--mid);
+    transition:all .15s; white-space:nowrap;
+  }
+  .tab.active { color:var(--black); border-bottom-color:var(--black); font-weight:600; }
+  .tab:hover:not(.active) { color:var(--black); }
+  .tab-content { display:none; }
+  .tab-content.active { display:block; animation:fadeIn .25s; }
+
+  .desc-section { margin-bottom:20px; }
+  .desc-section h3 { font-size:15px; font-weight:700; margin-bottom:8px; }
+  .desc-section p { font-size:13.5px; color:#374151; line-height:1.7; margin-bottom:8px; }
+  .desc-section ul { padding-left:18px; }
+  .desc-section ul li { font-size:13.5px; color:#374151; line-height:1.65; margin-bottom:5px; }
+
+  .qa-item { border-bottom:1px solid var(--border); padding:14px 0; }
+  .qa-item:last-child { border-bottom:none; }
+  .qa-q { font-weight:600; font-size:13.5px; margin-bottom:6px; color:var(--black); }
+  .qa-q::before { content:"Q  "; color:var(--mid); font-weight:400; }
+  .qa-a { font-size:13.5px; color:#374151; line-height:1.65; }
+  .qa-a::before { content:"A  "; font-weight:600; color:var(--black); }
+
+  .no-reviews {
+    text-align:center; padding:48px 24px;
+    border:1.5px dashed var(--border); border-radius:10px; color:var(--mid);
+  }
+  .no-reviews .nr-emoji { font-size:40px; margin-bottom:14px; }
+  .no-reviews p { font-size:13.5px; line-height:1.7; }
+
+  /* OFTEN BOUGHT TOGETHER */
+  .often-together { border-left:1px solid var(--border); padding-left:24px; }
+  .ot-title { font-size:15px; font-weight:700; margin-bottom:14px; }
+  .ot-item {
+    display:flex; gap:12px; padding:10px 0;
+    border-bottom:1px solid var(--border); align-items:center; cursor:pointer;
+    transition:background .1s; border-radius:6px; padding:10px 8px;
+  }
+  .ot-item:hover { background:var(--light); }
+  .ot-img {
+    width:56px; height:56px; border:1px solid var(--border); border-radius:6px;
+    display:flex; align-items:center; justify-content:center;
+    font-size:22px; background:#fff; flex-shrink:0; overflow:hidden;
+  }
+  .ot-img img { width:100%; height:100%; object-fit:cover; }
+  .ot-text { flex:1; }
+  .ot-price { font-size:15px; font-weight:700; color:var(--black); white-space:nowrap; }
+  .ot-price-old { font-size:11px; color:var(--mid); text-decoration:line-through; }
+  .ot-name { font-size:12.5px; font-weight:600; color:var(--black); line-height:1.3; margin-bottom:2px; }
+  .ot-sub { font-size:11.5px; color:var(--mid); }
+
+  /* TOAST */
+  .toast {
+    position:fixed; bottom:24px; right:24px;
+    background:var(--black); color:white;
+    padding:13px 18px; border-radius:8px;
+    font-size:13px; font-weight:500;
+    box-shadow:0 8px 24px rgba(0,0,0,.25);
+    transform:translateY(72px); opacity:0;
+    transition:all .35s cubic-bezier(.175,.885,.32,1.275);
+    z-index:999; display:flex; align-items:center; gap:10px; max-width:300px;
+  }
+  .toast.show { transform:translateY(0); opacity:1; }
+
+  @media(max-width:900px) {
+    .page-wrap { grid-template-columns:1fr; }
+    .side-nav { display:none; }
+    .product-layout { grid-template-columns:1fr; }
+    .info-grid { grid-template-columns:1fr; }
+    .site-header { padding:0 16px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- RAINBOW -->
+<div class="rainbow" style="position:sticky;top:0;z-index:300;"></div>
+
+<!-- HEADER -->
+<header class="site-header">
+  <a href="#" class="logo-wrap">
+<svg
+  class="logo-turtle"
+  viewBox="0 0 100 100"
+  xmlns="http://www.w3.org/2000/svg"
+  aria-hidden="true"
+>
+  <!-- Panzer -->
+  <circle cx="50" cy="55" r="24" fill="black"/>
+
+  <!-- Kopf -->
+  <circle cx="50" cy="22" r="7" fill="black"/>
+
+  <!-- Flossen -->
+  <ellipse cx="24" cy="48" rx="7" ry="4" fill="black" transform="rotate(-25 24 48)"/>
+  <ellipse cx="76" cy="48" rx="7" ry="4" fill="black" transform="rotate(25 76 48)"/>
+  <ellipse cx="30" cy="72" rx="7" ry="4" fill="black" transform="rotate(25 30 72)"/>
+  <ellipse cx="70" cy="72" rx="7" ry="4" fill="black" transform="rotate(-25 70 72)"/>
+
+  <!-- Schwanz -->
+  <path d="M50 82 Q55 90 50 95 Q45 90 50 82" fill="black"/>
+</svg>
+    </svg>
+    <span class="logo-wordmark">GALAXUS</span>
+  </a>
+  <div class="header-search">
+    <input type="text" placeholder="Wonach suchst du?" value="Elion Paqarizi Junior Category Manager">
+    <button class="header-search-btn">🔍</button>
+  </div>
+  <div class="header-icons">
+    <div class="header-icon">🔔<span class="badge">1</span></div>
+    <div class="avatar-icon" id="headerAvatar">EP</div>
+    <div class="header-icon">❓</div>
+    <div class="header-icon">⊞</div>
+    <div class="header-icon">🔗</div>
+    <div class="header-icon">🛒</div>
+  </div>
+</header>
+
+<!-- CAT NAV -->
+<div class="cat-nav">
+  <a href="#">Gesamtsortiment</a>
+  <a href="#">Karriere</a>
+  <a href="#" class="active">Category Management</a>
+  <a href="#">Digital Management</a>
+  <a href="#">E-Commerce</a>
+  <a href="#">Prozessanalyse</a>
+</div>
+
+<!-- PAGE WRAP -->
+<div class="page-wrap">
+
+  <!-- SIDE NAV -->
+  <div class="side-nav">
+    <div class="side-group">
+      <div class="side-group-title">Gesamtsortiment <span class="arrow">▶</span></div>
+    </div>
+    <div class="side-group">
+      <div class="side-group-title">Karriere <span class="arrow">▶</span></div>
+      <div class="side-item">Business Analyse</div>
+      <div class="side-item active">Category Management</div>
+      <div class="side-item">Digital Management</div>
+      <div class="side-item">E-Commerce</div>
+    </div>
+    <div class="side-related">
+      <div class="side-related-title">Verwandte Kategorien</div>
+      <a href="#">Prozessmanagement</a>
+      <a href="#">Mystery Shopping</a>
+      <a href="#">BPMN</a>
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <div style="min-width:0;">
+    <div class="breadcrumb-wrap">
+      <div class="breadcrumb">
+        <a href="#">Gesamtsortiment</a><span class="sep">›</span>
+        <a href="#">Karriere</a><span class="sep">›</span>
+        <a href="#">Category Management</a><span class="sep">›</span>
+        <span>Elion Paqarizi – Junior Category Manager</span>
+      </div>
+    </div>
+
+    <div class="product-area">
+      <div class="product-layout">
+
+        <!-- GALLERY -->
+        <div class="gallery">
+          <div class="gallery-main" id="galleryMain">
+            <div class="gallery-main-content" id="galleryContent">
+              <div class="product-circle">
+             <img src="img/elion.jpg" alt="Elion Paqarizi"> </div>
+              <div class="gallery-label" id="galleryLabel">Elion Paqarizi</div>
+              <div class="gallery-sub" id="gallerySub">SKU: EP-2026-CATMGMT-OST</div>
+            </div>
+          </div>
+          <div class="gallery-dots">
+            <div class="gdot active" onclick="switchSlide(0,this)"></div>
+            <div class="gdot" onclick="switchSlide(1,this)"></div>
+            <div class="gdot" onclick="switchSlide(2,this)"></div>
+            <div class="gdot" onclick="switchSlide(3,this)"></div>
+          </div>
+          <div class="gallery-thumbs">
+            <div class="gthumb active" id="gthumb0" onclick="switchSlide(0,document.querySelectorAll('.gdot')[0],this)">👤</div>
+            <div class="gthumb" onclick="switchSlide(1,document.querySelectorAll('.gdot')[1],this)">📊</div>
+            <div class="gthumb" onclick="switchSlide(2,document.querySelectorAll('.gdot')[2],this)">🔍</div>
+            <div class="gthumb" onclick="switchSlide(3,document.querySelectorAll('.gdot')[3],this)">💪</div>
+          </div>
+         </div>
+
+        <!-- BUY BOX + OFTEN TOGETHER -->
+        <div>
+          <div class="buybox">
+            <div class="bb-badge">Erstauflage 2026</div>
+            <div class="bb-price-row">
+              <span class="bb-price-main">Auf Anfrage</span>
+            </div>
+            <div class="bb-title"><strong>Elion</strong> Paqarizi – Junior Category Manager</div>
+            <div class="bb-subtitle">BSc Wirtschaftsinformatik · Digital Management · OST St. Gallen</div>
+
+            <div class="bb-meta">
+              <div class="bb-meta-group">
+                <div class="bb-meta-label">Bewertungen</div>
+                <div class="bb-meta-val">
+                  <span class="star">★★★★★</span> – <a href="#" onclick="switchTabById('bewertungen');return false;">Noch keine – sei der Erste</a>
+                </div>
+              </div>
+              <div class="bb-meta-group">
+                <div class="bb-meta-label">Hintergrund</div>
+                <div class="bb-meta-val"><a href="#">OST FH St. Gallen</a></div>
+              </div>
+            </div>
+
+            <div class="bb-avail">
+              <span class="avail-dot"></span>
+              Ab Oktober 2026 verfügbar
+            </div>
+            <div class="bb-stock">Zieht in den Raum Zürich – Gespräch sofort möglich</div>
+
+            <div class="bb-config">
+              <div class="bb-config-label">Rolle (offen für alle)</div>
+              <div class="bb-options">
+                <div class="bb-opt sel" onclick="selectOpt(this)">Category Business</div>
+                <div class="bb-opt" onclick="selectOpt(this)">Portfolio Development</div>
+                <div class="bb-opt" onclick="selectOpt(this)">Partner Development</div>
+              </div>
+            </div>
+
+            <div class="bb-config">
+              <div class="bb-config-label">Warengruppe</div>
+              <div class="bb-options">
+                <div class="bb-opt sel" onclick="selectOpt(this)">Sport</div>
+                <div class="bb-opt" onclick="selectOpt(this)">Beauty</div>
+                <div class="bb-opt" onclick="selectOpt(this)">Computing</div>
+                <div class="bb-opt" onclick="selectOpt(this)">Haushalt</div>
+                <div class="bb-opt" onclick="selectOpt(this)">Andere</div>
+              </div>
+            </div>
+
+            <a class="btn-cart"
+              href="mailto:elion.paqarizi@gmail.com?subject=Einladung%20zum%20Gespr%C3%A4ch%20%E2%80%93%20Junior%20Category%20Manager%20Digitec%20Galaxus&body=Hallo%20Elion%2C%0A%0Awir%20haben%20deine%20Bewerbung%20gesehen%20und%20m%C3%B6chten%20dich%20gerne%20zu%20einem%20Gespr%C3%A4ch%20einladen.%0A%0AFreundliche%20Gr%C3%BCsse%2C%0ADigitec%20Galaxus%20AG">
+              🛒 Zum Gespräch einladen
+            </a>
+
+            <div class="btn-row">
+              <button class="btn-outline" onclick="showToast('Elion wurde dem Vergleich hinzugefügt.','⊞')">⊞ Vergleichen</button>
+              <button class="btn-outline" onclick="showToast('Elion wurde auf den Merkzettel gesetzt.','🔖')">🔖 Merken</button>
+            </div>
+
+            <div class="bb-delivery">✅ Kostenloser Gesprächstermin ab sofort · <a href="mailto:elion.paqarizi@gmail.com">i</a></div>
+
+            <div class="bb-info-box">
+              <div class="bb-info-row">
+                <span class="bb-info-icon">📧</span>
+                <div class="bb-info-text">elion.paqarizi@gmail.com<span>Antwort innerhalb 24h</span></div>
+              </div>
+              <div class="bb-info-row">
+                <span class="bb-info-icon">📍</span>
+                <div class="bb-info-text">St. Gallen → Raum Zürich ab Okt. 2026<span>Umzug geplant für die Stelle</span></div>
+              </div>
+              <div class="bb-info-row">
+                <span class="bb-info-icon">🎓</span>
+                <div class="bb-info-text">BSc-Abschluss Sommer 2026<span>OST Ostschweizer Fachhochschule</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- OFTEN TOGETHER -->
+          <div class="often-together" style="margin-top:24px;padding-left:0;border-left:none;border-top:1px solid var(--border);padding-top:20px;">
+            <div class="ot-title">Oft zusammen eingestellt mit</div>
+            <div class="ot-item">
+              <div class="ot-img">💡</div>
+              <div class="ot-text">
+                <div class="ot-name">Frischer Blickwinkel auf Sortimentsdaten</div>
+                <div class="ot-sub">Mystery Shopping · Kundenperspektive</div>
+              </div>
+            </div>
+            <div class="ot-item">
+              <div class="ot-img">⚙️</div>
+              <div class="ot-text">
+                <div class="ot-name">BPMN-Prozessverständnis</div>
+                <div class="ot-sub">Praxisprojekt ProNautik</div>
+              </div>
+            </div>
+            <div class="ot-item">
+              <div class="ot-img">🌍</div>
+              <div class="ot-text">
+                <div class="ot-name">Zweisprachig Deutsch / Albanisch</div>
+                <div class="ot-sub">+ Englisch · Internationale Märkte</div>
+              </div>
+            </div>
+            <div class="ot-item">
+              <div class="ot-img">💪</div>
+              <div class="ot-text">
+                <div class="ot-name">Disziplin & Leidenschaft</div>
+                <div class="ot-sub">Fitness · Häkeln · Konsequenz</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SPECS TABLE -->
+      <div class="product-info">
+        <div class="section-title">Produktinformationen</div>
+        <div class="info-grid">
+          <div class="info-row">
+            <div>Name</div><div>Elion Paqarizi</div>
+          </div>
+          <div class="info-row">
+            <div>Studium</div><div>BSc Wirtschaftsinformatik, Vertiefung Digital Management – OST St. Gallen (2023–2026)</div>
+          </div>
+          <div class="info-row">
+            <div>Vorbildung</div><div>Zeichner EFZ Ingenieurbau + Technische BMS – Wälli AG St. Gallen & Herisau (2017–2023)</div>
+          </div>
+          <div class="info-row">
+            <div>Weitere Erfahrung</div><div>Kellner, Ferienjob Metallbauwerkstatt – vielseitig, belastbar, anpassungsfähig</div>
+          </div>
+          <div class="info-row">
+            <div>Software</div>
+            <div>
+              <span class="spec-tag">MS Excel</span><span class="spec-tag">MS PowerPoint</span>
+              <span class="spec-tag">MS Word</span><span class="spec-tag">Canva</span>
+              <span class="spec-tag">BPMN</span><span class="spec-tag">Java (basic)</span>
+            </div>
+          </div>
+          <div class="info-row">
+            <div>Sprachen</div>
+            <div>
+              <span class="spec-tag">Deutsch (Muttersprache)</span>
+              <span class="spec-tag">Albanisch (Muttersprache)</span>
+              <span class="spec-tag">Englisch (gut)</span>
+            </div>
+          </div>
+          <div class="info-row">
+            <div>E-Commerce</div><div>✅ Mystery Shopping Coop – Customer Journey & Online-Webshop-Analyse (seit Feb. 2025)</div>
+          </div>
+          <div class="info-row">
+            <div>Prozesse</div><div>✅ BPMN-Modellierung, Prozessaufnahme & -optimierung (PRP1 ProNautik Romanshorn)</div>
+          </div>
+          <div class="info-row">
+            <div>Pensum</div><div>80–100%</div>
+          </div>
+          <div class="info-row">
+            <div>Verfügbarkeit</div><div>Ab Oktober 2026 (zieht in den Raum Zürich)</div>
+          </div>
+          <div class="info-row">
+            <div>Kontakt</div><div>elion.paqarizi@gmail.com</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TABS -->
+      <div class="tabs-section">
+        <div class="tabs">
+          <div class="tab active" onclick="switchTab('beschreibung',this)">Beschreibung</div>
+          <div class="tab" onclick="switchTab('fragen',this)">Fragen & Antworten</div>
+          <div class="tab" onclick="switchTab('bewertungen',this)" id="tab-bewertungen">Bewertungen</div>
+        </div>
+
+        <div id="beschreibung" class="tab-content active">
+          <div class="desc-section">
+            <h3>Wer ist Elion Paqarizi?</h3>
+            <p>Elion ist ein analytisch denkender Kandidat mit einem ungewöhnlichen Werdegang: Von der Berufslehre als Zeichner Ingenieurbau über mehrere Jahre Berufserfahrung bis hin zum bewussten Einstieg ins Wirtschaftsinformatik-Studium an der OST St. Gallen. Er ist langjähriger Galaxus-Kunde – und verfolgt den Shop nicht nur als Konsument, sondern auch mit beruflichem Interesse für Sortiment, Plattformaufbau und Kundenerlebnis.</p>
+          </div>
+          <div class="desc-section">
+            <h3>Was ihn besonders macht</h3>
+            <ul>
+              <li><strong>Mystery Shopping Coop (seit Feb. 2025):</strong> Systematische Analyse von Online-Webshops und der gesamten Customer Journey – von der Suche bis zur Lieferung. Er weiss aus erster Beobachtung, wo Kunden abspringen und was sie begeistert.</li>
+              <li><strong>Praxisprojekt ProNautik Romanshorn:</strong> Eigenständige Prozessaufnahme, BPMN-Modellierung und Handlungsempfehlungen für ein KMU ohne bestehendes Prozessmanagement. Zeigt Initiative, Strukturierungsfähigkeit und Eigenverantwortung.</li>
+              <li><strong>Praxisprojekt SGSW Experience Center:</strong> Konzeptentwicklung und Marktanalyse für mobile Exponate – zeigt strategisches Denken und kreative Problemlösung.</li>
+              <li><strong>Vielseitige Berufspraxis:</strong> Als Kellner und in einer Metallbauwerkstatt gearbeitet, aktuell Fitness-Aushilfe – zeigt Anpassungsfähigkeit und die Bereitschaft, überall anzupacken.</li>
+            </ul>
+          </div>
+          <div class="desc-section">
+            <h3>Für welche Rolle geeignet?</h3>
+            <p>Elion ist für alle drei Einstiegsrollen offen. Welche am besten passt, zeigt das Gespräch. Seine Stärken spielen je nach Rolle unterschiedlich rein:</p>
+            <ul>
+              <li><strong>Category Business Manager:</strong> Datenaffinität, analytisches Denken, strukturiertes Arbeiten.</li>
+              <li><strong>Portfolio Development Manager:</strong> Kundenperspektive durch Mystery Shopping, Marktanalyse-Erfahrung (SGSW).</li>
+              <li><strong>Partner Development Manager:</strong> Stakeholder-Kommunikation aus mehreren Praxisprojekten, Kooperationserfahrung.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div id="fragen" class="tab-content">
+          <div class="qa-item">
+            <div class="qa-q">Warum gerade Galaxus?</div>
+            <div class="qa-a">Ich bin seit Jahren Kunde und verfolge Galaxus nicht nur als Shopper, sondern auch mit beruflichem Interesse. Was mich fasziniert: Galaxus ist weit mehr als ein Onlineshop – der Aufbau der Plattform, die Produkttexte, die Kampagnen, die Kultur dahinter. Ich bin überzeugt, dass ich mich in diesem Umfeld wirklich einbringen und weiterentwickeln kann.</div>
+          </div>
+          <div class="qa-item">
+            <div class="qa-q">Kein direkter Retail-Hintergrund – ein Problem?</div>
+            <div class="qa-a">Ich sehe das als Vorteil: Ich bringe den Blick der Kundenseite mit, nicht den der Einkaufsabteilung. Durch Mystery Shopping weiss ich, was Kunden wirklich erleben – das ist genau das Gegengewicht, das Category Management manchmal braucht.</div>
+          </div>
+          <div class="qa-item">
+            <div class="qa-q">Was machst du in der Freizeit?</div>
+            <div class="qa-a">Krafttraining und Muskelaufbau ist meine echte Leidenschaft – ich arbeite auch als Aushilfe im Fitnessstudio. Ausserdem häkle ich gerne. Ich bin jemand, der sich für Dinge begeistert und sie dann konsequent verfolgt.</div>
+          </div>
+          <div class="qa-item">
+            <div class="qa-q">Ab wann verfügbar?</div>
+            <div class="qa-a">BSc-Abschluss an der OST voraussichtlich Sommer 2026, Umzug in den Raum Zürich geplant – startbereit ab Oktober 2026. Für ein Gespräch bin ich ab sofort erreichbar: elion.paqarizi@gmail.com.</div>
+          </div>
+          <div class="qa-item">
+            <div class="qa-q">Warum der Wechsel von Ingenieurbau zu Wirtschaftsinformatik?</div>
+            <div class="qa-a">Die Lehre hat mir gezeigt, dass ich strukturiertes und technisches Denken liebe – gleichzeitig hat mich die digitale und wirtschaftliche Seite immer mehr fasziniert. Die Entscheidung war bewusst und zeigt, dass ich in der Lage bin, mich neu zu orientieren und konsequent neue Gebiete aufzubauen.</div>
+          </div>
+        </div>
+
+        <div id="bewertungen" class="tab-content">
+          <div class="no-reviews">
+            <div class="nr-emoji">⭐</div>
+            <p><strong>Noch keine Bewertungen vorhanden.</strong><br><br>
+            Das Produkt wurde soeben lanciert.<br>Bewertungen folgen nach dem ersten Einsatz.<br><br>
+            <em style="font-size:12px;color:#9CA3AF">→ Schreib die erste Bewertung – lad mich zum Gespräch ein.</em></p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast">
+  <span id="toastIcon">✅</span>
+  <span id="toastMsg"></span>
+</div>
+
+<script>
+  let photoURL = null;
+
+  const slides = [
+    { type:'photo', label:'Elion Paqarizi', sub:'SKU: EP-2026-CATMGMT-OST' },
+    { type:'emoji', icon:'📊', label:'Analytik & Daten', sub:'BPMN · Prozessanalyse · Struktur' },
+    { type:'emoji', icon:'🔍', label:'Mystery Shopper', sub:'Coop Online · Customer Journey' },
+    { type:'emoji', icon:'💪', label:'Leidenschaft & Disziplin', sub:'Fitness · Konsequenz · Einsatz' },
+  ];
+
+  function handlePhoto(e) {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = ev => {
+      photoURL = ev.target.result;
+      // Update thumb 0 and header avatar
+      const t0 = document.getElementById('gthumb0');
+      t0.className = 'gthumb active photo-gthumb';
+      t0.innerHTML = `<img src="${photoURL}" alt="">`;
+      const ha = document.getElementById('headerAvatar');
+      ha.innerHTML = `<img src="${photoURL}" alt="">`;
+      // Update main if on slide 0
+      renderSlide(0);
+      showToast('Foto gespeichert!', '📷');
+    };
+    reader.readAsDataURL(file);
+  }
+
+  document.getElementById('photoUploadTrigger').addEventListener('click', () => {
+    document.getElementById('photoUpload').click();
+  });
+
+  function renderSlide(idx) {
+    const content = document.getElementById('galleryContent');
+    const s = slides[idx];
+    content.style.opacity = '0';
+    setTimeout(() => {
+      if (s.type === 'photo' && photoURL) {
+        content.className = 'gallery-main-content photo-view';
+        content.innerHTML = `<img src="${photoURL}" alt="Elion Paqarizi">`;
+      } else if (s.type === 'photo') {
+        content.className = 'gallery-main-content';
+        content.innerHTML = `
+          <div class="product-circle">👤</div>
+          <div class="gallery-label">Elion Paqarizi</div>
+          <div class="gallery-sub">📷 Foto oben hochladen</div>`;
+      } else {
+        content.className = 'gallery-main-content';
+        content.innerHTML = `
+          <div class="product-circle">${s.icon}</div>
+          <div class="gallery-label">${s.label}</div>
+          <div class="gallery-sub">${s.sub}</div>`;
+      }
+      content.style.opacity = '1';
+      content.style.transition = 'opacity .25s';
+    }, 120);
+  }
+
+  function switchSlide(idx, dot, thumb) {
+    document.querySelectorAll('.gdot').forEach(d => d.classList.remove('active'));
+    document.querySelectorAll('.gthumb').forEach(t => t.classList.remove('active'));
+    if (dot) dot.classList.add('active');
+    if (thumb) thumb.classList.add('active');
+    else document.querySelectorAll('.gthumb')[idx]?.classList.add('active');
+    renderSlide(idx);
+  }
+
+  function switchTab(id, el) {
+    document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    if (el) el.classList.add('active');
+  }
+
+  function switchTabById(id) {
+    const tabs = ['beschreibung','fragen','bewertungen'];
+    const tabEls = document.querySelectorAll('.tab');
+    switchTab(id, tabEls[tabs.indexOf(id)]);
+  }
+
+  function selectOpt(el) {
+    el.parentElement.querySelectorAll('.bb-opt').forEach(o => o.classList.remove('sel'));
+    el.classList.add('sel');
+  }
+
+  function showToast(msg, icon = '✅') {
+    document.getElementById('toastMsg').textContent = msg;
+    document.getElementById('toastIcon').textContent = icon;
+    const t = document.getElementById('toast');
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 3000);
+  }
+</script>
+</body>
+</html>
